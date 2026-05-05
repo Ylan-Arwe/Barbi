@@ -1,91 +1,139 @@
-# The Modern Prometheus
-> **A GitHub Repository Template Designed For Working With Coding Agents**
-
-**Initial Design:** Anshar Seraphim  
-**ORCID:** [0009-0001-9104-4812](https://orcid.org/0009-0001-9104-4812)
+# AI Recruiting Platform (working title)
+> **A wrapper-first scaffold for building a recruiter-first, evidence-backed AI recruiting operating system**
 
 ---
-**New here?** Start with [New User Onboarding](docs/new_user_onboarding.md) for a plain-language tour of the repository's purpose, wrapper-first workflow, quality gates, checklist discipline, and coding-agent operating model.
+
+**Start here:** [New user onboarding](docs/new_user_onboarding.md) for a practical orientation, then [master documentation index](docs/master_documentation_index.md) for the full doc and file crosswalk.
+
 ---
 
-## Welcome to The Modern Prometheus - Project Description
-This GitHub Repository Starter is a reusable repository-bootstrap system for creating agent-ready, quality-controlled Python projects. It packages the instructions, scripts, ledgers, checklists, policies, and automation needed for a repository to begin with disciplined execution rather than acquiring rules later through preventable execution failures.
+## What this repository is becoming
 
-The starter includes coding-agent directives, contributor instructions, unified pre-commit orchestration, unified test orchestration, strict lint/type/security/docstring checks, UTF-8 policy, release-note practices, checklist templates, and per-hook JSON skip ledgers. The skip-ledger design allows quality-assurance hooks to avoid rechecking the whole repository on every iteration by focusing on touched or not-yet-cleared files.
+This repository is the scaffolded starting state for an AI recruiting platform that aims to unify:
 
-The system can be extended from single-contributor use to multi-contributor work by adding stronger file identity metadata such as blob hashes, modification times, contributor scope, and manifest reconciliation. Its docstring aggregation and interrogation functions also support rapid conceptual audit: reviewers can inspect what the code claims each module, class, and function is doing without reading the entire repository from scratch. This system also allows .json export of Docstring Manifests for frictionless LLM processing for the purpose of project documentation, user manuals, and conceptual audit.
+- job intake and hiring-manager calibration;
+- talent search and rediscovery;
+- candidate profiles, provenance, and enrichment;
+- explainable scoring and governed AI support;
+- outreach, replies, scheduling, and interview coordination;
+- ATS, email, calendar, CRM, and developer-facing integrations;
+- analytics, ROI measurement, privacy controls, and auditability.
 
-## Prompting Coding-LLMs
-### **Example Metaprompt for Building Code**
-The following re-usable prompt can be used to iteratively prompt Coding-LLMs, like GPT Codex or Claude Code, to continually address checklist entries in a high discipline manner:
+The platform is intentionally being built with a proof-backed posture. Claims about AI, outreach automation, candidate data, and enterprise trust should only move as fast as the repository's code, logs, tests, and docs can support them.
+
+## What exists now
+
+This repo is still a scaffold, not a finished product. It currently includes:
+
+- a documentation spine split from the original recruiting-platform blueprint;
+- a package and app tree populated with docstring-only Python placeholders;
+- a prerequisite-ordered `Final-Productization-Checklist.md`;
+- the original template's wrapper-first automation, strict quality gates, and test discipline;
+- prompt, skill, and context roots prepared for later build-out.
+
+There is no real application logic yet. The purpose of this state is to make future coding sessions bounded, navigable, and explicit about where work belongs.
+
+## Canonical reading order
+
+1. [AGENTS.md](AGENTS.md)
+2. [docs/master_documentation_index.md](docs/master_documentation_index.md)
+3. [docs/03_architecture/repository_asset_map.md](docs/03_architecture/repository_asset_map.md)
+4. [docs/03_architecture/code_localization_plan.md](docs/03_architecture/code_localization_plan.md)
+5. [Final-Productization-Checklist.md](Final-Productization-Checklist.md)
+
+## Prompting coding agents
+
+### Copyable execution prompt for this project
+
+Use the following prompt when handing work to a stateless coding agent:
+
+```text
+# Execute bounded implementation work for the AI Recruiting Platform scaffold
+
+Read `AGENTS.md`, `docs/master_documentation_index.md`, `docs/03_architecture/repository_asset_map.md`, `docs/03_architecture/code_localization_plan.md`, and the highest-priority open entries in `Final-Productization-Checklist.md`.
+
+Your job is to implement meaningful bounded work, not to minimally annotate the checklist.
+
+Rules:
+- Preserve wrapper-first workflow.
+- Use `python scripts/run_precommit_suite.py` for quality remediation.
+- Use `python scripts/run_tests.py` for tests.
+- Respect checklist ordination and prerequisites.
+- Expand placeholder modules in place rather than inventing new roots casually.
+- Do not invent runtime dependencies, public claims, legal compliance, or finished trust artifacts.
+- Keep docs, package READMEs, and checklist entries in sync with any implementation changes.
+- If a task surfaces new bounded work, add a granular checklist entry with scope, context, target files, dependencies, and DONE WHEN criteria.
+
+Before closing the session:
+- run the full pre-commit wrapper;
+- run the full test wrapper;
+- update release notes if workflow-relevant behavior changed;
+- remove completed checklist items and rewrite partial items as remaining work.
 ```
-# Execute tasks and ensure no precommit script hook violations in project, maintain parity with documentation
-* Address tasks described in `Final-Productization-Checklist.md` through remediation/implementation of described issues/goals to the maximum extent allowed by your session (no minimal executions, genuinely address a significant scope, not just checklist updates or diagnostics)  
 
-## Following directives in `AGENTS.md` about pre-commit syntax, perform tasks as below
-* Address tasks in `Final-Productization-Checklist.md`, starting with the tasks that must be completed before future tasks and implementation can be addressed.
-* Diagnose/Resolve any surfacing failures/warnings/errors related to your execution to keep our progress momentum on any backlog of pre-commit violations.
-* If you see multiple checklist entries or items that are easily combined into a single execution, it's helpful to address as many as you can in order to reduce the total number of needed sessions. 
-* If you need to break a task into pieces and create new checklist entries for other agents to pick up where you left off, it's permitted, but make a genuine effort to complete work and address as many files as possible listed in the current phase, where possible.
-* If, during the course of your work, you discover something that needs implementation, isn't working how it should be, or clearly is just a scaffolded idea that isn't been finished with logic, create new checklist entries for that surfaced task/gap, etc, as well.
-* Pay attention to ordinality of tasks. If a task that's lower in the checklist depends on other checklist items to be complete to wire it properly, **DO NOT PROCESS THAT TASK FIRST** 
-* If completion of your current task then adds more granularity to an existing checklist entry, update it, if completion surfaces a need for further implementation or steps, ensure that actionable checklist entry is created. 
-* DO NOT TAKE SHORTCUTS when addressing problems or implementing design. Remediate issues properly, not by just circumventing or shimming around a problem, our suite is designed to surface problems, you are to remediate those problems, not simply silence warnings, errors, or failures, when something needs addressing. If you find such a workaround in use and a genuine problem is being hidden, remove whatever is silencing warnings, errors, or failures. 
-* Only work on `Final-Optimization-Checklist.md` tasks if entries there indicate no current optimization and they exceed a latency budget of 0.30 s, unless directed to, specifically.
-* As long as entries exist for tests above the latency budget, do not update them unless you are working on them. Rationale: This keeps you from "updating test times" and calling this an execution.
-* Tests may ONLY be marked slow or to skip if rationale and justification is surfaced in `Final-Optimization-Checklist.md`. If you find something undocumented, document it, or release the skip or slow marker so it can be surfaced for remediation.
+## Quickstart
 
-### Finishing Your Session
-* Ensure you've removed checklist entries for completed work or stale entries, transforming entries that are partially addressed into what remains to be done rather than annotation of partial progress, which can lead to task churn. Ensure any updates to existing checklist entries that are affected by your execution are made and that any new tasks that have become evident from your execution are likewise created in the checklist for iterative-progress, needed improvements, and quality documentation.
-```
-Use this re-usable prompt after adding checklist entries for needed work to `Final-Productization-Checklist.md` or directing the Coding-LLM to create checklist entries there after an audit or as the output of a prompt. This method will allow fast cycling and building according to a development plan.
-
-## Repository map
-
-- `scripts/`: Canonical automation entry points and supporting quality/test utilities.
-- `tests/`: Verification of wrapper behavior and policy enforcement helpers.
-- `config/precommit_store/`: Pre-commit skip ledgers plus cached pylint diagnostics used by wrapper flows.
-- `docs/`: Narrative documentation and release history.
-- `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.
-- `Final-Optimization-Checklist.md`: Tracking for tests above the latency budget with explicit rationale.
-
-## Start here
-
-1. Create and activate a virtual environment.
-2. Install dev dependencies:
+Create and activate a virtual environment, then install development tooling:
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 ```
 
-3. Run the required wrappers (never bypass these at session close):
+Canonical closing checks:
 
 ```bash
 python scripts/run_precommit_suite.py
 python scripts/run_tests.py
 ```
 
-## Wrapper-first contributor policy
+## Wrapper-first execution model
 
-- Quality hooks must be driven by `scripts/run_precommit_suite.py` (including checklist-structure validation for `Final-Productization-Checklist.md`).
-- Tests must be driven by `scripts/run_tests.py`.
-- Direct/manual invocations (`pre-commit run <hook>`, naked `pytest`) are treated as policy violations because they bypass repository summary artifacts and skip-ledger coordination.
+The template's execution philosophy remains in force.
 
-## Dependency and tooling reproducibility posture
+- Quality remediation goes through `python scripts/run_precommit_suite.py`
+- Tests go through `python scripts/run_tests.py`
+- Direct `pre-commit run <hook>` or naked `pytest` bypass repository policy and should be treated as the wrong control surface
 
-- Python runtime is intentionally pinned to `>=3.13,<3.14` in `pyproject.toml` so contributors and automation runners execute under a single interpreter target that matches Ruff, MyPy, Pyright, and Pylint settings.
-- Build backend packages (`setuptools`, `wheel`) and development tools use explicit lower and upper bounds (`>=x,<next-major`) to reduce resolver drift while still accepting patch/minor security and stability updates.
-- Strict checker posture is intentional: MyPy and Pyright both run in strict modes, Ruff linting selects correctness/simplification rule families, and interrogate enforces 100% docstring coverage.
-- Dependabot grouping is configured in `.github/dependabot.yml` to batch Python quality-tooling and GitHub Actions updates separately, reducing review noise while preserving frequent update cadence.
+This matters because the wrappers coordinate scoped execution, skip-ledger refresh, summary artifacts, checklist validation, and repository-specific policy that direct tool calls do not preserve.
+
+## Repository map
+
+- `docs/`: repository-native design, architecture, governance, and delivery docs
+- `apps/`: future app-surface entrypoints and contracts for API, web, worker, and extension runtimes
+- `src/ai_recruiting_platform/`: internal platform package tree and placeholder ownership map
+- `prompts/`: future system prompts and task recipes
+- `skills/`: future reusable project and agent skills
+- `context/`: generated context bundles and docstring catalogs
+- `scripts/`: canonical automation wrappers and supporting quality utilities
+- `tests/`: wrapper and policy verification for the repository itself
+- `config/precommit_store/`: skip ledgers and cached diagnostics used by wrapper flows
+- `Final-Productization-Checklist.md`: open build work, ordered by prerequisite
+- `Final-Optimization-Checklist.md`: latency exceptions only
+
+## Documentation navigation
+
+- [docs/master_documentation_index.md](docs/master_documentation_index.md): full crosswalk
+- [docs/new_user_onboarding.md](docs/new_user_onboarding.md): practical repo introduction
+- [docs/01_product/README.md](docs/01_product/README.md): product intent and workflow
+- [docs/03_architecture/README.md](docs/03_architecture/README.md): architecture and code placement
+- [docs/04_ai_automation/README.md](docs/04_ai_automation/README.md): AI, agent, prompt, and skill planning
+- [docs/05_governance_trust/README.md](docs/05_governance_trust/README.md): governance and trust posture
+- [docs/06_delivery_operations/README.md](docs/06_delivery_operations/README.md): delivery, operations, and roadmap
+
+## Dependency posture
+
+The repo keeps template development tooling intact. Runtime dependencies for the actual recruiting platform are intentionally conservative at this stage and should be added only through checklist-driven implementation work once the corresponding framework or provider decision is explicit.
 
 ## Docstring automation support
 
-- `scripts/aggregate_project_docstrings.py` exports a monolithic JSON catalog of Python module/class/function docstrings for contextual bootstrap workflows and machine-readable downstream processing.
-- `scripts/audit_docstrings.py` generates a human-readable Markdown inventory of discovered docstrings so reviewers can run live implementation-vs-documentation parity audits with line-level symbol visibility.
-- Interrogate is configured at 100% coverage in project tooling and is executed via the pre-commit wrapper.
+This repository inherits two useful automation aids from the template:
 
-## Documentation expectations for template consumers
+- `python scripts/aggregate_project_docstrings.py` for a machine-readable catalog of Python docstrings
+- `python scripts/audit_docstrings.py` for a human-readable inventory used in documentation parity review
 
-- Keep folder-level `README.md` files current so new users and stateless agents can navigate assets without hidden context.
-- Update `docs/release_notes.md` whenever tooling behavior, quality workflow, or user-facing repository operation changes.
+Those scripts are especially useful here because the scaffold uses docstring-only placeholder modules to localize future implementation responsibility without pretending code exists yet.
+
+## Release notes
+
+Update [docs/release_notes.md](docs/release_notes.md) whenever project-facing behavior, documentation navigation, or workflow expectations change.

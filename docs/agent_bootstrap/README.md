@@ -1,31 +1,40 @@
 # Agent bootstrap build plan
 
-This folder documents how to create agent-bootstrap artifacts from existing repository automation.
+This folder documents how to generate bootstrap context for AI Recruiting Platform (working title) from the repository itself.
 
-## Scope and ownership
+## Purpose
 
-- Audience: maintainers extending this template for new repositories.
-- Owners: contributors who modify wrapper scripts or documentation-generation utilities.
-- Source-of-truth scripts: `scripts/aggregate_project_docstrings.py`, `scripts/audit_docstrings.py`, `scripts/run_precommit_suite.py`, and `scripts/run_tests.py`.
+Bootstrap artifacts should help a stateless coding agent understand current implementation claims and documentation structure without replacing the source-of-truth files in the repo.
 
-## Task list
+## Current bootstrap inputs
 
-1. Generate docstring catalog JSON for machine-readable context:
-   - Command: `python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json`
-   - Output: `context/project_docstrings_catalog.json`
-   - Acceptance check: JSON exists, parses, and includes module/function/class entries.
-2. Generate parity-focused Markdown inventory for reviewers:
-   - Command: `python scripts/audit_docstrings.py --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md`
-   - Output: `build/automation_contract/docstring_inventory.md` (local evidence artifact; do not commit).
-   - Acceptance check: table rows enumerate script/test symbols and docstrings.
-3. Validate wrapper policy and tests:
-   - Commands:
-     - `python scripts/run_precommit_suite.py`
-     - `python scripts/run_tests.py`
-   - Acceptance check: both summary blocks report success.
+- `scripts/aggregate_project_docstrings.py`: exports a machine-readable JSON catalog of Python module, class, and function docstrings.
+- `scripts/audit_docstrings.py`: produces a markdown inventory that is useful for parity review.
+- `docs/master_documentation_index.md`: the main crosswalk from docs to code roots.
+- package and folder `README.md` files under `apps/`, `src/`, `prompts/`, `skills/`, `context/`, and `docs/`.
 
-## Prompt/recipe artifacts
+## Recommended bootstrap workflow
 
-- Skills markdown should reference wrapper-first commands and checklist governance from `AGENTS.md`.
-- Prompt recipes should include required quality gates and instructions to attach summary blocks from `build/automation_contract/`.
-- Task-recipe JSON should include explicit `scope`, `target_files`, and `done_when` fields mirroring checklist policy.
+1. Generate a docstring catalog:
+   ```bash
+   python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json
+   ```
+2. Generate a markdown inventory for review:
+   ```bash
+   python scripts/audit_docstrings.py --scan-root apps --scan-root src --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md
+   ```
+3. Pair the generated artifacts with:
+   - `docs/master_documentation_index.md`
+   - the domain or workflow doc relevant to the task
+   - the package README for the target folder
+   - the current checklist entry being worked
+
+## What should be added later
+
+Future checklist work should add narrower bootstrap bundles for:
+- route-family context;
+- domain-module context;
+- compliance and trust-center artifact context;
+- prompt and skill indexes for specific agent roles.
+
+Generated artifacts should remain derivative and clearly identify their source inputs.

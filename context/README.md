@@ -1,26 +1,29 @@
 # context/
 
-Machine-readable context payloads generated from repository source data.
+Generated context payloads and derivative repository snapshots used to help agents and reviewers navigate AI Recruiting Platform (working title).
 
-## Lifecycle policy
+## Policy
 
-- Treat this folder as a generated-artifact staging area.
-- JSON outputs from `scripts/aggregate_project_docstrings.py` are bootstrap inputs for agents and review tooling.
-- Generated files are **not** committed unless a maintainer explicitly requests a checked-in snapshot for reproducibility.
+- Treat this folder as generated-artifact staging, not as a second source of truth.
+- Generated context should identify the docs and code roots it was built from.
+- Do not commit large or stale generated artifacts unless a checklist task explicitly requires a reproducible snapshot.
 
-## Bootstrap usage
+## Expected artifact types
 
-Generate a full catalog:
+- JSON docstring catalogs from `scripts/aggregate_project_docstrings.py`
+- targeted markdown inventories generated for review sessions
+- future context bundles that summarize a route family, domain slice, or governance surface for a bounded implementation task
+
+## Recommended generation commands
 
 ```bash
 python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json
+python scripts/audit_docstrings.py --scan-root apps --scan-root src --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md
 ```
 
-Recommended follow-up checks:
+## Relationship to prompts and skills
 
-```bash
-python scripts/run_precommit_suite.py --scope paths --paths scripts/aggregate_project_docstrings.py context/README.md
-python scripts/run_tests.py --scope paths --select tests/test_aggregate_project_docstrings.py
-```
-
-If you need a committed canonical sample for documentation examples, add a checklist entry first so artifact policy is explicitly reviewed.
+- canonical repo facts belong in `docs/` and package READMEs;
+- reusable execution guidance belongs in `skills/`;
+- task or system prompt assets belong in `prompts/`;
+- generated context bundles belong here only when they compress those canonical sources for a specific session or automation workflow.

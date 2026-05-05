@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is a generic Python automation scaffold that can be reused as a baseline for new projects.
+This repository is the scaffolded starting state for AI Recruiting Platform (working title). It preserves the original template's wrapper-first automation and quality discipline while adding project-specific docs, placeholder modules, and build sequencing guidance.
 
 All contributors must follow [AGENTS.md](AGENTS.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -17,9 +17,20 @@ All contributors must follow [AGENTS.md](AGENTS.md) and the [Code of Conduct](CO
    pre-commit install
    ```
 
-## Required quality workflow
+## Read before editing
 
-The repository uses a unified runner so contributors do not need to remember each lint or type-check command individually.
+A new contributor should read, in order:
+
+1. `README.md`
+2. `AGENTS.md`
+3. `docs/master_documentation_index.md`
+4. `docs/03_architecture/repository_asset_map.md`
+5. `docs/03_architecture/code_localization_plan.md`
+6. `Final-Productization-Checklist.md`
+
+Do not start by improvising file placement from the blueprint or from memory. The scaffold already localizes where work belongs.
+
+## Required quality workflow
 
 ### While iterating on a subset of files
 
@@ -35,7 +46,7 @@ You can focus on a single hook with:
 python scripts/run_precommit_suite.py --only <hook> --scope paths --paths <file1> <file2>
 ```
 
-### Before opening a pull request
+### Before opening a pull request or closing a session
 
 Run the full automation sequence in this order:
 
@@ -44,47 +55,15 @@ python scripts/run_precommit_suite.py
 python scripts/run_tests.py
 ```
 
-Each runner writes a copy-ready summary block under `build/automation_contract/`. Use those blocks in PR notes or review summaries instead of copying incomplete progress logs.
+Each runner writes a copy-ready summary block under `build/automation_contract/`. Use those blocks in review summaries instead of partial progress logs.
 
-## Tooling inventory
+## Project-specific implementation expectations
 
-The pre-commit suite currently orchestrates:
+- Expand placeholder Python modules in place rather than creating new roots casually.
+- Keep package READMEs, architecture docs, and checklist entries synchronized with implementation changes.
+- Do not add runtime dependencies, public claims, or compliance assertions speculatively.
+- Treat candidate rights, suppression, explainability, and auditability as build constraints, not backlog decoration.
 
-- Ruff format
-- Ruff lint
-- Pylint
-- Interrogate (100% docstring coverage)
-- MyPy
-- Pyright
-- Deptry
-- Vulture
-- Bandit
-- UTF-8 + Unicode escape policy checks
+## Release notes and docs
 
-## Testing expectations
-
-- Use `python scripts/run_tests.py --scope paths --select <test-path-or-nodeid>` for focused runs.
-- Keep individual tests fast. If a new or modified test exceeds 0.20 seconds, document the justification in `Final-Optimization-Checklist.md`.
-- Use `Final-Productization-Checklist.md` to record unresolved tooling or productization gaps that are out of scope for the current session.
-
-## Release notes
-
-Update [docs/release_notes.md](docs/release_notes.md) whenever tooling, contributor workflow, or user-visible repository behavior changes.
-
-## Template onboarding
-
-If you are using this repository as a starter template, complete this onboarding path before your first PR:
-
-1. Read `README.md` for repository purpose and layout.
-2. Read `AGENTS.md` for wrapper-first policy, required quality gates, and checklist governance.
-3. Run the canonical command flow:
-   - `python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>` while iterating.
-   - `python scripts/run_precommit_suite.py` then `python scripts/run_tests.py` before review.
-4. Collect evidence artifacts from `build/automation_contract/` and paste the summary blocks in your PR/testing notes.
-5. If a failure cannot be fixed in-session, add a granular remaining-work entry to `Final-Productization-Checklist.md` with scope, target files, dependencies, and DONE WHEN criteria.
-
-Failure/remediation flow:
-- Wrapper reports failing hook/test target.
-- Remediate implementation (never suppress tooling).
-- Re-run wrapper on touched paths.
-- Re-run full wrappers before handoff.
+Update [docs/release_notes.md](docs/release_notes.md) whenever project-facing behavior or workflow expectations change. If implementation forces a change in file ownership or roadmap order, update the relevant doc in `docs/` and the affected package README in the same session.

@@ -3,12 +3,12 @@ requires = ["setuptools>=82.0.1,<83", "wheel>=0.46.3,<0.48"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python-repo-scaffold"
+name = "ai-recruiting-platform"
 version = "0.1.0"
-description = "Generic automation and quality tooling scaffold for Python repositories"
+description = "Wrapper-first scaffold for an evidence-backed AI recruiting platform"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
-authors = [{ name = "Repository contributors" }]
+authors = [{ name = "Project contributors" }]
 license = { text = "MIT" }
 dependencies = []
 
@@ -30,7 +30,11 @@ dev = [
 ]
 
 [tool.setuptools]
-py-modules = []
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ai_recruiting_platform*"]
 
 [tool.ruff]
 line-length = 120
@@ -50,7 +54,7 @@ fixable = ["ALL"]
 unfixable = []
 
 [tool.ruff.lint.isort]
-known-first-party = ["scripts"]
+known-first-party = ["scripts", "tests", "ai_recruiting_platform"]
 
 [tool.pylint.main]
 py-version = "3.13"
@@ -97,14 +101,14 @@ warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unreachable = true
 show_error_codes = true
-files = ["scripts", "tests"]
+files = ["scripts", "tests", "src", "apps"]
 exclude = [
     "^build/automation_contract/",
     "^reports/reasoning/pipeline/",
 ]
 
 [tool.pyright]
-include = ["scripts", "tests"]
+include = ["scripts", "tests", "src", "apps"]
 exclude = ["build/automation_contract", "reports/reasoning/pipeline"]
 pythonVersion = "3.13"
 pythonPlatform = "Linux"
@@ -138,7 +142,7 @@ DEP002 = [
 ]
 
 [tool.vulture]
-paths = ["scripts", "tests"]
+paths = ["scripts", "tests", "src", "apps"]
 min_confidence = 80
 sort_by_size = true
 
