@@ -53,39 +53,32 @@ Example format:
 
 ### Phase 0 - Runtime foundation and executable project bootstrap
 
-- [ ] **Choose and document the concrete runtime stack for web, API, worker, persistence, queueing, search, and auth**
-  - Scope: Turn the proposed technology architecture into explicit implementation decisions or narrowly scoped approved defaults for the first build lane.
-  - Context: The scaffold deliberately avoided speculative runtime dependencies. Before framework code appears, the repo needs an explicit stack decision record and matching checklist sequencing.
-  - Target Files: `docs/03_architecture/technology_architecture.md`, `docs/06_delivery_operations/implementation_roadmap_and_phase_plan.md`, `README.md`, `pyproject.toml`
-  - Dependencies: None
-  - DONE WHEN: The selected stack for the first implementation wave is documented with rationale, rejected alternatives, and any needed pyproject or README updates, and no contradictory stack assumptions remain in the docs.
-
 - [ ] **Implement typed runtime settings and environment-loading support**
   - Scope: Replace the settings placeholder with real typed configuration loading for API, worker, integrations, AI, analytics, notifications, and governance-sensitive defaults.
   - Context: Every app shell and service slice will need a shared settings surface before framework bootstrapping or provider wiring can happen safely.
   - Target Files: `src/ai_recruiting_platform/config/runtime_and_settings.py`, `src/ai_recruiting_platform/config/README.md`, `.env.example`, `docs/03_architecture/technology_architecture.md`
-  - Dependencies: `Choose and document the concrete runtime stack for web, API, worker, persistence, queueing, search, and auth`
+  - Dependencies: None
   - DONE WHEN: A typed settings implementation exists, `.env.example` documents required keys, package docs explain the boundary, and wrapper checks pass for the new code roots.
 
 - [ ] **Create initial migration and persistence scaffolding for transactional platform data**
   - Scope: Establish the persistence root, migration tooling, and a first migration plan for tenancy, users, jobs, candidates, audit, and rights-state tables.
   - Context: The domain docs describe the data model, but implementation cannot begin in earnest until migrations and persistence conventions exist.
   - Target Files: `pyproject.toml`, `migrations/README.md`, `migrations/versions/`, `docs/03_architecture/data_model_and_domain_objects.md`, `docs/03_architecture/technology_architecture.md`
-  - Dependencies: `Choose and document the concrete runtime stack for web, API, worker, persistence, queueing, search, and auth`
+  - Dependencies: None
   - DONE WHEN: A migration tool and folder structure exist, the first schema plan is codified, and the docs explain how transactional tables will evolve.
 
 - [ ] **Bootstrap the API, worker, and web app shells using the chosen runtime stack**
   - Scope: Turn the app-surface contract files into real framework entrypoints with minimal boot logic, health checks, and placeholder route or job registration.
   - Context: The repo already reserves `apps/api`, `apps/worker`, and `apps/web`. They need executable shells before domain slices can be wired end to end.
   - Target Files: `apps/api/api_surface_contract.py`, `apps/worker/worker_surface_contract.py`, `apps/web/web_surface_contract.py`, `apps/api/README.md`, `apps/worker/README.md`, `apps/web/README.md`
-  - Dependencies: `Choose and document the concrete runtime stack for web, API, worker, persistence, queueing, search, and auth`, `Implement typed runtime settings and environment-loading support`
+  - Dependencies: `Implement typed runtime settings and environment-loading support`
   - DONE WHEN: Each app root has a real bootstrap module or minimal runtime entrypoint, health-check behavior is documented, and the package READMEs describe how those shells connect to the internal package.
 
 - [ ] **Add local development orchestration for the chosen app and data stack**
   - Scope: Create reproducible local startup instructions and any required dev-container or compose assets for API, worker, data stores, and supporting services.
   - Context: A stateless agent can scaffold code, but humans still need a reproducible way to run the system locally as real implementation begins.
   - Target Files: `README.md`, `CONTRIBUTING.md`, `docker-compose.yml`, `.dockerignore`, `docs/new_user_onboarding.md`
-  - Dependencies: `Choose and document the concrete runtime stack for web, API, worker, persistence, queueing, search, and auth`, `Bootstrap the API, worker, and web app shells using the chosen runtime stack`
+  - Dependencies: `Bootstrap the API, worker, and web app shells using the chosen runtime stack`
   - DONE WHEN: A documented local run path exists for the selected stack, new contributors can start the essential services, and docs no longer describe local execution as purely theoretical.
 
 ### Phase 1 - Identity, tenancy, and admin control plane

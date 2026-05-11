@@ -1,60 +1,116 @@
 # Technology architecture
 
-**Purpose:** Record the preferred technical stack direction, the areas that remain intentionally undecided, and the dependency policy that should govern implementation.
+**Purpose:** Record concrete runtime decisions for the first implementation lane, plus explicit constraints and deferred decisions.
 
-**Audience:** Technical leads, contributors selecting frameworks, and coding agents deciding whether a new runtime dependency is justified yet.
+**Audience:** Technical leads, contributors selecting frameworks, and coding agents introducing runtime dependencies.
 
-**How to use this document:** Use this document before adding frameworks, SDKs, databases, or build tools so that stack decisions remain consistent with the scaffold's conservative dependency posture.
+**How to use this document:** Treat this as the source of truth for phase-zero runtime choices. If implementation requires a different technology, update this file, the roadmap, and checklist sequencing in the same session.
 
-**Relation to the blueprint:** Derived from blueprint section 12, but rewritten as a decision-and-boundary document rather than a shopping list.
+**Relation to the blueprint:** Derived from blueprint section 12 and converted from directional guidance into concrete implementation decisions.
 
-**Relation to the repository tree:** Explains why `pyproject.toml` currently stays conservative, how future app roots should acquire dependencies, and which folders are expected to own stack-specific code once decisions are approved.
-
-**Neighboring documents:**
-- [System architecture](../03_architecture/system_architecture.md)
-- [API design and webhooks](../03_architecture/api_design_and_webhooks.md)
-- [Prompt recipes, skills, and context injection plan](../04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md)
-- [Implementation roadmap and phase plan](../06_delivery_operations/implementation_roadmap_and_phase_plan.md)
+**Relation to the repository tree:** Defines how `apps/`, `src/ai_recruiting_platform/`, and `migrations/` should acquire stack-specific code.
 
 ## Concise thesis
 
-The scaffold is intentionally ahead on architecture and behind on framework commitments. That is a feature, not a gap. Runtime dependencies should be added only when the corresponding implementation slice is being built and its tests, docs, and operational needs are known.
+The repository now commits to a single Python-first runtime lane: FastAPI for HTTP APIs, Celery workers backed by Redis, PostgreSQL with SQLAlchemy and Alembic for transactional storage, OpenSearch for lexical search, pgvector in PostgreSQL for semantic retrieval prototyping, and Auth0-compatible OIDC for identity integration.
 
-## Design problem this document addresses
+## Decision record for Phase 0 foundations
 
-Without explicit technology-architecture rules, stateless agents can quietly turn a conservative scaffold into an accidental framework pileup with overlapping abstractions, incompatible build assumptions, and speculative dependencies.
+### 1) Web runtime and UI delivery
 
-## Proposed stack directions
+**Decision:** Use Next.js (App Router, TypeScript) for `apps/web`.
 
-The blueprint points toward a modern web frontend, typed backend APIs, relational transactional storage, search plus vector retrieval, queue-backed workers, provider-agnostic AI orchestration, and observability built on logs, traces, and metrics. Those are directions, not yet committed implementation facts.
+**Rationale:**
+- aligns with recruiter-facing, workflow-heavy UI needs where server rendering and route-level data loading help first paint and deep-linking;
+- supports modern component ecosystems for admin and analytics surfaces;
+- keeps API separation explicit by consuming `apps/api` contracts.
 
-The scaffold therefore localizes likely code roots without asserting the final framework. `apps/web/` can later host the chosen frontend runtime, `apps/api/` the HTTP application entrypoint, and `apps/worker/` the async runtime. `src/ai_recruiting_platform/` remains the product logic package regardless of framework.
+**Rejected alternatives for the first lane:**
+- React + Vite SPA only: simpler bootstrap, but weaker default SSR behavior for workflow navigation and deep-linking;
+- Django templates: strong backend coupling, but reduces UI modularity for a separate frontend team.
 
-## Dependency posture for this scaffold stage
+### 2) API runtime
 
-Current policy:
-- preserve template development tooling and wrapper-first automation;
-- do not add runtime libraries until the relevant checklist phase begins;
-- prefer checklist entries over speculative dependency commits;
-- update `pyproject.toml` path coverage when new code roots appear so quality tooling sees them;
-- keep framework-specific decisions documented in this file and in the roadmap when they become real.
+**Decision:** Use FastAPI + Uvicorn in `apps/api`.
 
-This keeps the repo coherent for future implementation without pretending the architecture has already been code-proven.
+**Rationale:**
+- typed request/response contracts map cleanly to existing schema placeholders;
+- async support matches integration-heavy workflows;
+- straightforward health, readiness, and OpenAPI endpoints for phase-zero shells.
 
-## Decision categories that must be made explicitly later
+**Rejected alternatives:**
+- Flask: good ergonomics but weaker typed-contract posture;
+- Django REST Framework: heavier framework surface before we have domain flows implemented.
 
-The scaffold still requires explicit decisions for:
-- frontend framework and component library;
-- backend framework and API stack;
-- database migration tool and persistence approach;
-- search and vector storage strategy;
-- worker/queue runtime;
-- identity provider strategy;
-- analytics warehouse and BI/reporting approach;
-- deployment topology and infrastructure automation.
+### 3) Worker runtime and queueing
 
-Each of these decisions should be opened by a checklist entry before code or dependencies land.
+**Decision:** Use Celery workers with Redis as broker/result backend in `apps/worker`.
 
-## Phased implementation notes
+**Rationale:**
+- mature delayed/retry/task-chaining model for enrichment, scoring, and integration sync flows;
+- Redis is already needed for shared operational concerns;
+- broad operational familiarity and observability support.
 
-Use this document to block speculative implementation shortcuts. When a runtime choice becomes necessary, update this file, the roadmap, the relevant package README, and the checklist in the same session so future agents inherit an explicit decision trail.
+**Rejected alternatives:**
+- RQ: lighter but less expressive for complex orchestration;
+- Dramatiq: strong option, but less existing operational familiarity across template contributors.
+
+### 4) Transactional persistence and migrations
+
+**Decision:** Use PostgreSQL + SQLAlchemy 2.x + Alembic.
+
+**Rationale:**
+- relational guarantees for tenancy, privacy, audit, and rights-state controls;
+- SQLAlchemy models can remain internal while route schemas stay explicit;
+- Alembic is a stable migration path for prerequisite-ordered rollout.
+
+**Rejected alternatives:**
+- Django ORM: not chosen because API runtime is FastAPI;
+- NoSQL-first approach: weaker fit for strict relational governance and audit lineage.
+
+### 5) Search and retrieval
+
+**Decision:**
+- lexical and filter search via OpenSearch;
+- semantic prototype path via pgvector in PostgreSQL (upgradable to dedicated vector store later).
+
+**Rationale:**
+- OpenSearch handles recruiter filter/search patterns and operational faceting;
+- pgvector provides low-friction semantic retrieval during early phases without immediate extra infrastructure.
+
+**Deferred decision:** Whether to move semantic retrieval to a dedicated vector engine after workload profiling.
+
+### 6) Identity and authentication
+
+**Decision:**
+- OIDC/OAuth2 integration using Auth0-compatible provider contracts;
+- JWT validation in API routes with tenant/workspace claims.
+
+**Rationale:**
+- enterprise-friendly path for later SSO expansion;
+- lets phase-one auth flows start with local-dev and managed-provider options.
+
+### 7) Observability and operations
+
+**Decision:**
+- OpenTelemetry instrumentation for API and worker traces;
+- structured JSON logs;
+- Prometheus metrics endpoint from API and worker exporters.
+
+**Rationale:**
+- supports evidence-backed debugging and ops discipline called for across governance docs;
+- keeps vendor choice open while enforcing telemetry shape early.
+
+## Dependency posture and implementation boundaries
+
+- Runtime dependencies are now approved for phase-zero foundations and should be introduced only in the owning roots (`apps/`, `src/ai_recruiting_platform/config/`, and `migrations/`).
+- Do not add provider SDKs (ATS, CRM, email vendors) until the corresponding checklist item is active.
+- Keep `src/ai_recruiting_platform/` framework-light: domain, services, schemas, and contracts should not depend on web routing internals.
+
+## Remaining explicit decisions
+
+The following are intentionally deferred and must be documented before adoption:
+- frontend component library standardization;
+- infrastructure-as-code stack and deployment substrate;
+- analytics warehouse/BI vendor;
+- long-term semantic vector store strategy after production profiling.

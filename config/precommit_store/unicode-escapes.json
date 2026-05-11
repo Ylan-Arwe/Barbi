@@ -5,6 +5,9 @@
   "AGENTS.md": {
     "skip": "Y"
   },
+  "CLAUDE.md": {
+    "skip": "Y"
+  },
   "CODE_OF_CONDUCT.md": {
     "skip": "Y"
   },
@@ -18,6 +21,33 @@
     "skip": "Y"
   },
   "README.md": {
+    "skip": "Y"
+  },
+  "apps/README.md": {
+    "skip": "Y"
+  },
+  "apps/api/README.md": {
+    "skip": "Y"
+  },
+  "apps/api/api_surface_contract.py": {
+    "skip": "Y"
+  },
+  "apps/extension/README.md": {
+    "skip": "Y"
+  },
+  "apps/extension/extension_surface_contract.py": {
+    "skip": "Y"
+  },
+  "apps/web/README.md": {
+    "skip": "Y"
+  },
+  "apps/web/web_surface_contract.py": {
+    "skip": "Y"
+  },
+  "apps/worker/README.md": {
+    "skip": "Y"
+  },
+  "apps/worker/worker_surface_contract.py": {
     "skip": "Y"
   },
   "config/README.md": {
@@ -65,13 +95,196 @@
   "context/README.md": {
     "skip": "Y"
   },
+  "context/project_docstrings_catalog.json": {
+    "skip": "Y"
+  },
+  "context/recipes/checklist_audit_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/documentation_parity_audit_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/pr_evidence_packaging_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/quality_remediation_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/release_prep_session.md": {
+    "skip": "Y"
+  },
+  "docs/01_product/README.md": {
+    "skip": "Y"
+  },
+  "docs/01_product/end_to_end_workflow_map.md": {
+    "skip": "Y"
+  },
+  "docs/01_product/feature_inventory_and_prioritization.md": {
+    "skip": "Y"
+  },
+  "docs/01_product/platform_overview_and_build_thesis.md": {
+    "skip": "Y"
+  },
+  "docs/01_product/product_principles_personas_and_jobs.md": {
+    "skip": "Y"
+  },
+  "docs/02_experience/README.md": {
+    "skip": "Y"
+  },
+  "docs/02_experience/information_architecture_and_navigation.md": {
+    "skip": "Y"
+  },
+  "docs/02_experience/screen_inventory.md": {
+    "skip": "Y"
+  },
+  "docs/02_experience/ux_specification.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/README.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/api_design_and_webhooks.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/code_localization_plan.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/data_model_and_domain_objects.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/repository_asset_map.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/system_architecture.md": {
+    "skip": "Y"
+  },
+  "docs/03_architecture/technology_architecture.md": {
+    "skip": "Y"
+  },
+  "docs/04_ai_automation/README.md": {
+    "skip": "Y"
+  },
+  "docs/04_ai_automation/agent_system_and_governance.md": {
+    "skip": "Y"
+  },
+  "docs/04_ai_automation/ai_ml_design.md": {
+    "skip": "Y"
+  },
+  "docs/04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md": {
+    "skip": "Y"
+  },
+  "docs/05_governance_trust/README.md": {
+    "skip": "Y"
+  },
+  "docs/05_governance_trust/compliance_privacy_and_ai_governance.md": {
+    "skip": "Y"
+  },
+  "docs/05_governance_trust/documentation_launch_and_public_artifacts.md": {
+    "skip": "Y"
+  },
+  "docs/05_governance_trust/security_trust_and_candidate_rights.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/README.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/analytics_and_roi_measurement.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/billing_packaging_and_usage.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/implementation_roadmap_and_phase_plan.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/integration_design.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/observability_operations_and_support.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/stateless_coding_agent_handoff.md": {
+    "skip": "Y"
+  },
+  "docs/06_delivery_operations/testing_quality_assurance_and_eval_strategy.md": {
+    "skip": "Y"
+  },
   "docs/README.md": {
     "skip": "Y"
   },
   "docs/agent_bootstrap/README.md": {
     "skip": "Y"
   },
+  "docs/agent_bootstrap/operator_context_injection.md": {
+    "skip": "Y"
+  },
+  "docs/context_trigger_matrix.md": {
+    "skip": "Y"
+  },
+  "docs/examples/README.md": {
+    "skip": "Y"
+  },
+  "docs/examples/bad_checklist_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/bad_evidence_packaging.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_checklist_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_friction_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_summary_block_usage.md": {
+    "skip": "Y"
+  },
+  "docs/generated_artifact_contracts.md": {
+    "skip": "Y"
+  },
+  "docs/master_documentation_index.md": {
+    "skip": "Y"
+  },
+  "docs/new_user_onboarding.md": {
+    "skip": "Y"
+  },
   "docs/release_notes.md": {
+    "skip": "Y"
+  },
+  "docs/runtime_target_support_matrix.md": {
+    "skip": "Y"
+  },
+  "docs/security_hygiene.md": {
+    "skip": "Y"
+  },
+  "docs/source_boundary_manifest.md": {
+    "skip": "Y"
+  },
+  "docs/troubleshooting.md": {
+    "skip": "Y"
+  },
+  "prompts/README.md": {
+    "skip": "Y"
+  },
+  "prompts/system/README.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/README.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/checklist_audit_prompt.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/pr_evidence_packaging_prompt.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/quality_remediation_prompt.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/repo_audit_prompt.md": {
+    "skip": "Y"
+  },
+  "prompts/task_recipes/scaffold_bootstrap_prompt.md": {
     "skip": "Y"
   },
   "pyproject.toml": {
@@ -126,6 +339,384 @@
     "skip": "Y"
   },
   "scripts/toml_compat.py": {
+    "skip": "Y"
+  },
+  "skills/README.md": {
+    "skip": "Y"
+  },
+  "skills/agents/README.md": {
+    "skip": "Y"
+  },
+  "skills/project/README.md": {
+    "skip": "Y"
+  },
+  "skills/project/checklist-audit/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/project/documentation-parity-audit/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/project/quality-remediation/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/project/scaffold-bootstrap/SKILL.md": {
+    "skip": "Y"
+  },
+  "src/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/agent_registry_and_permissions.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/compliance_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/data_quality_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/hiring_manager_calibration_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/outreach_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/research_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/roi_insights_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/scheduling_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/agents/sourcing_agent_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/evaluation_and_guardrails_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/model_gateway_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/prompt_registry_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/ai/ranking_and_matching_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/analytics/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/analytics/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/analytics/event_taxonomy_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/analytics/metrics_catalog_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/analytics/reporting_and_qbr_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/agents_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/analytics_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/auth_and_identity_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/billing_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/candidates_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/compliance_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/integrations_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/jobs_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/outreach_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/scheduling_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/scoring_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/api/search_routes.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/audit/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/audit/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/audit/audit_log_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/audit/provenance_and_traceability_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/billing/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/billing/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/billing/entitlements_and_plans.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/billing/usage_and_credits.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/audit_export_and_bias_support.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/model_cards_and_risk_classification.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/privacy_requests_and_candidate_rights.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/compliance/suppression_and_unsubscribe_registry.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/config/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/config/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/config/runtime_and_settings.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/data_quality/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/data_quality/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/data_quality/deduplication_and_merge_review.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/data_quality/freshness_and_confidence_scoring.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/analytics_and_roi.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/audit_and_provenance.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/billing_and_entitlements.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/candidate_profiles_and_talent_graph.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/compliance_privacy_and_suppression.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/integrations_and_sync.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/jobs_and_calibration.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/outreach_and_sequences.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/replies_and_conversations.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/scheduling_and_interviews.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/scoring_and_explainability.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/search_and_rediscovery.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/domain/tenancy_and_access.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/ats_connectors_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/base_connector_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/crm_hcm_connectors_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/email_and_calendar_connectors_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/integrations/webhooks_and_public_api_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/notifications/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/notifications/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/notifications/notification_delivery_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/analytics_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/billing_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/candidates_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/compliance_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/integration_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/jobs_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/outreach_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/scheduling_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/scoring_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/schemas/search_schemas.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/search/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/search/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/search/indexing_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/search/relevance_and_ranking_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/search/semantic_search_contract.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/README.md": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/__init__.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/analytics_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/billing_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/enrichment_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/explainability_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/integration_sync_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/interview_planning_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/job_intake_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/notification_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/outreach_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/privacy_and_suppression_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/rediscovery_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/reply_classification_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/scheduling_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/scoring_service.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/services/search_service.py": {
     "skip": "Y"
   },
   "tests/README.md": {

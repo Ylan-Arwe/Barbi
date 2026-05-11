@@ -122,6 +122,19 @@ This matters because the wrappers coordinate scoped execution, skip-ledger refre
 - [docs/05_governance_trust/README.md](docs/05_governance_trust/README.md): governance and trust posture
 - [docs/06_delivery_operations/README.md](docs/06_delivery_operations/README.md): delivery, operations, and roadmap
 
+
+## Approved first-lane runtime stack
+
+The first implementation lane is now standardized on:
+- **Web:** Next.js (TypeScript, App Router)
+- **API:** FastAPI + Uvicorn
+- **Worker/queue:** Celery + Redis
+- **Transactional DB:** PostgreSQL via SQLAlchemy + Alembic
+- **Search:** OpenSearch (lexical/filter) with pgvector semantic prototyping
+- **Auth:** OIDC/OAuth2 with Auth0-compatible provider contracts
+
+These choices are documented in `docs/03_architecture/technology_architecture.md` and should be treated as the default unless a later checklist task explicitly revises them.
+
 ## Dependency posture
 
 The repo keeps template development tooling intact. Runtime dependencies for the actual recruiting platform are intentionally conservative at this stage and should be added only through checklist-driven implementation work once the corresponding framework or provider decision is explicit.
