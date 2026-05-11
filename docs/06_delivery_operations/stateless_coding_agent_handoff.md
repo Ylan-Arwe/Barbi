@@ -13,6 +13,7 @@
 **Neighboring documents:**
 - [AGENTS](../../AGENTS.md)
 - [Master documentation index](../master_documentation_index.md)
+- [Agent bootstrap playbook](../agent_bootstrap/operator_context_injection.md)
 - [Code localization plan](../03_architecture/code_localization_plan.md)
 - [Prompt recipes, skills, and context injection plan](../04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md)
 
@@ -35,6 +36,7 @@ Recommended order:
 6. package README(s) for the target folder
 7. `Final-Productization-Checklist.md`
 8. the placeholder module(s) named in the checklist entry.
+9. the relevant recipe under `context/recipes/` or skill under `skills/project/` when the task matches one of those workflows.
 
 ## How to treat placeholder modules
 

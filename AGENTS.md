@@ -16,6 +16,11 @@ When entering the repo for the first time, read in this order:
 
 Use the root `README.md` and `docs/new_user_onboarding.md` for orientation, but treat this file and the master index as the main operating law for agents.
 
+## Stateless agent quickstart context pack
+- Read `docs/agent_bootstrap/operator_context_injection.md` before making workflow or code changes so wrapper syntax, evidence packaging, and local-boundary rules are explicit.
+- Use `docs/troubleshooting.md` when wrapper or tooling output is unclear instead of improvising alternate commands.
+- Keep local evidence under `build/automation_contract/` and `reports/reasoning/pipeline/` untracked; validate new ignore coverage with `git check-ignore -v <path>` when needed.
+
 ## Baseline conduct
 - Write in American English and save files as UTF-8.
 - Do not commit binary assets (screenshots, videos, archives). Share them separately in the session summary if needed.
@@ -74,6 +79,7 @@ Use the root `README.md` and `docs/new_user_onboarding.md` for orientation, but 
    - Each suite writes a ready-to-copy snippet under `build/automation_contract/`.
    - When copying directly from the terminal, start at the final line and select upward until you include the banner and table.
    - Do **not** clip intermediate progress output.
+   - Keep `build/automation_contract/` and `reports/reasoning/pipeline/` untracked; they are local evidence caches rather than source assets.
 
 ## Testing expectations
 - Run the pytest scope that covers the code you changed using `python scripts/run_tests.py`.
@@ -93,6 +99,7 @@ Use the root `README.md` and `docs/new_user_onboarding.md` for orientation, but 
 - Folder-level `README.md` files under `apps/`, `src/`, `prompts/`, `skills/`, `context/`, and the docs families are part of the execution surface. Keep them current.
 - Update `docs/release_notes.md` whenever workflow-relevant, user-facing, or repo-navigation behavior changes.
 - Keep internal docs honest about scaffold status. Do not rewrite planned behavior as implemented fact.
+- Keep generated-artifact boundaries aligned with `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, and `docs/security_hygiene.md`.
 - Use the docstring tooling when you need a compact implementation snapshot:
   - `python scripts/aggregate_project_docstrings.py`
   - `python scripts/audit_docstrings.py`

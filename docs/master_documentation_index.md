@@ -16,6 +16,8 @@ The blueprint remains the upstream planning source, but the repository docs list
 - [Root README](../README.md): project summary, quickstart, wrapper policy, and copyable coding-agent prompt.
 - [New user onboarding](new_user_onboarding.md): practical explanation of repo state and reading order.
 - [AGENTS](../AGENTS.md): mandatory workflow rules, quality gates, checklist ordination, and project-specific guardrails.
+- [Agent bootstrap playbook](agent_bootstrap/operator_context_injection.md): minimum context pack, wrapper syntax, and evidence rules.
+- [Troubleshooting guide](troubleshooting.md): wrapper/tooling failure signatures and remediation paths.
 - [Final Productization Checklist](../Final-Productization-Checklist.md): open bounded work.
 - [Final Optimization Checklist](../Final-Optimization-Checklist.md): only for latency-budget exceptions.
 
@@ -73,6 +75,13 @@ The blueprint remains the upstream planning source, but the repository docs list
 | `docs/06_delivery_operations/observability_operations_and_support.md` | Observability, operations, and support | Signals, runbooks, and support-readiness expectations. |
 | `docs/06_delivery_operations/stateless_coding_agent_handoff.md` | Stateless coding agent handoff | Operational instructions for stateless agent navigation and execution. |
 | `docs/06_delivery_operations/testing_quality_assurance_and_eval_strategy.md` | Testing, quality assurance, and eval strategy | Quality strategy spanning static checks, tests, and AI evals. |
+| `docs/troubleshooting.md` | Troubleshooting guide | Canonical recovery paths for wrapper and tooling failures. |
+| `docs/security_hygiene.md` | Security hygiene and data boundary guide | Secret-handling, local-evidence, and deny-path commit rules. |
+| `docs/generated_artifact_contracts.md` | Generated artifact contracts | Commit policy and producer/consumer expectations for ledgers and evidence. |
+| `docs/source_boundary_manifest.md` | Source boundary manifest | Source-versus-generated boundary classification for contributors and agents. |
+| `docs/context_trigger_matrix.md` | Task-to-context trigger matrix | Workflow-specific guidance on which context assets to load. |
+| `docs/runtime_target_support_matrix.md` | Runtime target support matrix | Support boundaries for local contributors, agents, and CI runtimes. |
+| `docs/examples/README.md` | Checklist and evidence examples | Good/bad examples for checklist entries and summary-block packaging. |
 
 ## Crosswalk from documentation families to repo folders
 
@@ -89,9 +98,11 @@ The blueprint remains the upstream planning source, but the repository docs list
 
 - [apps/README.md](../apps/README.md): deployable surface contracts and future app entrypoints.
 - [src/README.md](../src/README.md): internal platform package map.
-- [prompts/README.md](../prompts/README.md): future system prompts and task recipes.
-- [skills/README.md](../skills/README.md): future reusable execution skills.
-- [context/README.md](../context/README.md): generated context artifacts and bootstrap policy.
+- [prompts/README.md](../prompts/README.md): system-prompt placeholders and repository-execution task recipes.
+- [prompts/task_recipes/README.md](../prompts/task_recipes/README.md): copy-ready prompt recipes for repo workflows.
+- [skills/README.md](../skills/README.md): reusable execution-skill index.
+- [skills/project/README.md](../skills/project/README.md): project execution skills for checklist, docs, remediation, and bootstrap workflows.
+- [context/README.md](../context/README.md): generated context artifacts and reusable session recipes.
 - [docs/agent_bootstrap/README.md](agent_bootstrap/README.md): how to generate bootstrap context from the repo itself.
 
 ## Synchronization rule

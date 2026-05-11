@@ -1,18 +1,22 @@
-# prompts/task_recipes/
+# Task recipe prompts
 
-**Purpose:** Reusable task-specific prompt recipes for bounded implementation or audit work.
+This folder contains copy-ready prompt assets for bounded repository workflows.
 
-**Why this folder exists:** Use this folder for copyable work recipes that reference canonical docs.
+## Available assets
 
-## Current assets
+- `repo_audit_prompt.md`: full repository audit of docs plus implementation parity.
+- `quality_remediation_prompt.md`: wrapper-first remediation for lint, type, security, and policy failures.
+- `checklist_audit_prompt.md`: backlog hygiene and dependency-order audit.
+- `pr_evidence_packaging_prompt.md`: prepare review notes with wrapper summary-block evidence.
+- `scaffold_bootstrap_prompt.md`: first-session orientation and validation prompt for this scaffolded repository.
 
-- `README.md`: folder guide for future assets.
+## How to use these prompts
 
-## Responsibility boundaries
+1. Choose the prompt that matches your task objective.
+2. Read the prompt's ingestion order and load the named files before running commands.
+3. Execute only canonical wrapper commands from `scripts/`.
+4. Capture evidence from `build/automation_contract/` and close or rewrite checklist entries.
 
-This folder should own the concerns described above and should not silently absorb unrelated responsibilities just because it is nearby. If a new file is added here, update this README and the relevant architecture or localization doc in the same session.
+## Closure requirement
 
-## Nearby related docs or modules
-
-- `docs/04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md`
-- `docs/agent_bootstrap/README.md`
+A prompt run is complete only when required wrappers were executed with canonical syntax, unresolved issues were moved into granular checklist entries when necessary, and final evidence blocks were captured from `build/automation_contract/`.

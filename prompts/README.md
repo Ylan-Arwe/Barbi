@@ -1,18 +1,14 @@
-# prompts/
+# Prompt library
 
-**Purpose:** Future prompt assets for system behavior and bounded task recipes.
+This folder stores durable prompt assets that belong in the repository rather than in chat history or checklist prose.
 
-**Why this folder exists:** This folder exists so prompt assets get first-class placement instead of living in random notes or checklist prose.
+## Current structure
 
-## Current assets
+- `system/`: product- or surface-level system prompts that should ship with the platform once implemented.
+- `task_recipes/`: copy-ready repository-execution prompt recipes for audits, remediation loops, PR evidence packaging, and scaffold bootstrap.
 
-- `README.md`: folder guide for future assets.
+## Usage rules
 
-## Responsibility boundaries
-
-This folder should own the concerns described above and should not silently absorb unrelated responsibilities just because it is nearby. If a new file is added here, update this README and the relevant architecture or localization doc in the same session.
-
-## Nearby related docs or modules
-
-- `docs/04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md`
-- `docs/agent_bootstrap/README.md`
+- Prompt assets should reference canonical docs instead of replacing them.
+- Repository-execution prompt recipes must preserve wrapper-first commands and checklist governance from `AGENTS.md`.
+- If a prompt asset changes contributor workflow or makes new repo claims, update `docs/release_notes.md` and the relevant docs in the same session.

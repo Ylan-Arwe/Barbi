@@ -29,7 +29,7 @@ This repo is still a scaffold, not a finished product. It currently includes:
 - a package and app tree populated with docstring-only Python placeholders;
 - a prerequisite-ordered `Final-Productization-Checklist.md`;
 - the original template's wrapper-first automation, strict quality gates, and test discipline;
-- prompt, skill, and context roots prepared for later build-out.
+- initial project-operational prompt recipes, context recipes, project skills, and bootstrap guidance alongside the future product prompt roots.
 
 There is no real application logic yet. The purpose of this state is to make future coding sessions bounded, navigable, and explicit about where work belongs.
 
@@ -100,9 +100,9 @@ This matters because the wrappers coordinate scoped execution, skip-ledger refre
 - `docs/`: repository-native design, architecture, governance, and delivery docs
 - `apps/`: future app-surface entrypoints and contracts for API, web, worker, and extension runtimes
 - `src/ai_recruiting_platform/`: internal platform package tree and placeholder ownership map
-- `prompts/`: future system prompts and task recipes
-- `skills/`: future reusable project and agent skills
-- `context/`: generated context bundles and docstring catalogs
+- `prompts/`: system-prompt placeholders plus repository-execution task recipes
+- `skills/`: reusable project and agent skills
+- `context/`: generated context bundles, session recipes, and docstring catalogs
 - `scripts/`: canonical automation wrappers and supporting quality utilities
 - `tests/`: wrapper and policy verification for the repository itself
 - `config/precommit_store/`: skip ledgers and cached diagnostics used by wrapper flows
@@ -116,6 +116,9 @@ This matters because the wrappers coordinate scoped execution, skip-ledger refre
 - [docs/01_product/README.md](docs/01_product/README.md): product intent and workflow
 - [docs/03_architecture/README.md](docs/03_architecture/README.md): architecture and code placement
 - [docs/04_ai_automation/README.md](docs/04_ai_automation/README.md): AI, agent, prompt, and skill planning
+- [docs/troubleshooting.md](docs/troubleshooting.md): wrapper-failure signatures and remediation paths
+- [docs/security_hygiene.md](docs/security_hygiene.md): secret-handling and local-evidence boundaries
+- [docs/generated_artifact_contracts.md](docs/generated_artifact_contracts.md): generated-artifact commit rules
 - [docs/05_governance_trust/README.md](docs/05_governance_trust/README.md): governance and trust posture
 - [docs/06_delivery_operations/README.md](docs/06_delivery_operations/README.md): delivery, operations, and roadmap
 

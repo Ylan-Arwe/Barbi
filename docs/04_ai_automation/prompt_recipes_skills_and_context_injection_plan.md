@@ -26,17 +26,17 @@ Without an explicit plan, prompt assets, ad hoc notes, and generated context dum
 
 ## Prompt asset strategy
 
-Use `prompts/system/` for durable system-level instructions tied to platform roles or surfaces, and `prompts/task_recipes/` for bounded, copyable work recipes such as implementing a route family, auditing a trust document, or building a search service slice. Prompt assets should reference canonical docs, not replace them.
+Use `prompts/system/` for durable system-level instructions tied to platform roles or surfaces, and `prompts/task_recipes/` for bounded, copyable work recipes such as implementing a route family, auditing a trust document, or running a repository audit. Prompt assets should reference canonical docs, not replace them. The repo now includes a first operational set of task-recipe prompts for audits, remediation loops, evidence packaging, and scaffold bootstrap.
 
 ## Skill asset strategy
 
-Use `skills/project/` for repo-specific execution skills such as wrapper-first remediation, checklist ordination, documentation parity work, and bootstrap generation. Use `skills/agents/` for agent-role skills such as governed sourcing, compliance review, or analytics interpretation. Skills should teach repeatable working methods, not store project facts that belong in docs.
+Use `skills/project/` for repo-specific execution skills such as wrapper-first remediation, checklist ordination, documentation parity work, and bootstrap generation. Use `skills/agents/` for agent-role skills such as governed sourcing, compliance review, or analytics interpretation. Skills should teach repeatable working methods, not store project facts that belong in docs. The repo now includes initial project execution skills under `skills/project/`.
 
 ## Context injection strategy
 
-Use `context/` for generated machine-readable or human-readable context packs such as docstring catalogs, targeted module inventories, or temporary bootstrap bundles. Generated context should always identify its source inputs and should never become more authoritative than the repository files it summarizes.
+Use `context/` for generated machine-readable or human-readable context packs and for reusable session recipes that orchestrate wrapper-first workflows. Generated context should always identify its source inputs and should never become more authoritative than the repository files it summarizes.
 
-The existing template scripts already support JSON docstring aggregation and markdown inventories. Future checklist work can extend that into narrower context bundles for route families, domain slices, or compliance artifacts.
+The existing template scripts already support JSON docstring aggregation and markdown inventories. The repo now also includes reusable session recipes under `context/recipes/`. Future checklist work can extend that into narrower context bundles for route families, domain slices, or compliance artifacts.
 
 ## Phased implementation notes
 

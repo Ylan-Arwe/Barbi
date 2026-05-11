@@ -1,18 +1,14 @@
-# skills/project/
+# Project execution skills
 
-**Purpose:** Project-specific skills for wrapper-first execution, checklist use, and repo navigation.
+This folder stores reusable project-specific skills for working inside this repository.
 
-**Why this folder exists:** Use this folder for reusable methods that teach agents how to work in this repo.
+## Available skills
 
-## Current assets
-
-- `README.md`: folder guide for future assets.
+- `quality-remediation/SKILL.md`: implementation plus wrapper remediation loops.
+- `checklist-audit/SKILL.md`: checklist dependency and actionability audits.
+- `documentation-parity-audit/SKILL.md`: documentation-to-implementation parity checks.
+- `scaffold-bootstrap/SKILL.md`: first-session bootstrap for this scaffolded repository.
 
 ## Responsibility boundaries
 
-This folder should own the concerns described above and should not silently absorb unrelated responsibilities just because it is nearby. If a new file is added here, update this README and the relevant architecture or localization doc in the same session.
-
-## Nearby related docs or modules
-
-- `docs/04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md`
-- `AGENTS.md`
+These skills teach repeatable workflow behavior. They should not become a second source of truth for project facts that already belong in `docs/`, package READMEs, or the checklist.

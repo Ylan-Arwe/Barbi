@@ -30,9 +30,9 @@ Top-level ownership is:
 - `docs/` for repository-native design, architecture, governance, and delivery docs;
 - `apps/` for deployable surface contracts and future app entrypoints;
 - `src/ai_recruiting_platform/` for product logic packages and typed internal interfaces;
-- `prompts/` for future system prompts and task recipes;
-- `skills/` for future reusable execution guidance and agent skills;
-- existing template roots such as `scripts/`, `tests/`, `config/`, and `context/` for wrapper-first automation and generated context support.
+- `prompts/` for system-prompt placeholders and repository-execution task recipes;
+- `skills/` for reusable project execution skills and future agent-role skills;
+- existing template roots such as `scripts/`, `tests/`, `config/`, and `context/` for wrapper-first automation, generated context, and session recipes.
 
 ## Why placeholders exist
 

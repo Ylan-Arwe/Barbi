@@ -2,7 +2,7 @@
 
 This repository is the scaffolded starting state for AI Recruiting Platform (working title). It preserves the original template's wrapper-first automation and quality discipline while adding project-specific docs, placeholder modules, and build sequencing guidance.
 
-All contributors must follow [AGENTS.md](AGENTS.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+All contributors must follow [AGENTS.md](AGENTS.md), the [Code of Conduct](CODE_OF_CONDUCT.md), and the [security hygiene guide](docs/security_hygiene.md).
 
 ## Local setup
 
@@ -24,9 +24,10 @@ A new contributor should read, in order:
 1. `README.md`
 2. `AGENTS.md`
 3. `docs/master_documentation_index.md`
-4. `docs/03_architecture/repository_asset_map.md`
-5. `docs/03_architecture/code_localization_plan.md`
-6. `Final-Productization-Checklist.md`
+4. `docs/agent_bootstrap/operator_context_injection.md`
+5. `docs/03_architecture/repository_asset_map.md`
+6. `docs/03_architecture/code_localization_plan.md`
+7. `Final-Productization-Checklist.md`
 
 Do not start by improvising file placement from the blueprint or from memory. The scaffold already localizes where work belongs.
 
@@ -46,6 +47,12 @@ You can focus on a single hook with:
 python scripts/run_precommit_suite.py --only <hook> --scope paths --paths <file1> <file2>
 ```
 
+Run focused tests for changed behavior with:
+
+```bash
+python scripts/run_tests.py --scope paths --select <pytest-selector>
+```
+
 ### Before opening a pull request or closing a session
 
 Run the full automation sequence in this order:
@@ -57,13 +64,54 @@ python scripts/run_tests.py
 
 Each runner writes a copy-ready summary block under `build/automation_contract/`. Use those blocks in review summaries instead of partial progress logs.
 
+## Commit and PR discipline
+
+To keep reviews tractable, split work into phases instead of submitting one oversized diff.
+
+- Never commit binary evidence artifacts (screenshots, videos, archives).
+- Keep local evidence caches and Python local-state artifacts untracked via the root `.gitignore`; verify additions with `git check-ignore -v <path>`.
+- Commit wrapper-managed ledger changes in `config/precommit_store/*.json` whenever the wrapper updates them.
+- Trigger phased execution when either threshold is met:
+  - more than 25 files changed in one work unit, or
+  - more than 1,200 net changed lines (additions + deletions) in one work unit.
+
+Per-phase validation before each phase commit:
+
+```bash
+python scripts/run_precommit_suite.py --scope paths --paths <touched-file1> <touched-file2>
+python scripts/run_tests.py --scope paths --select <relevant-selector>
+```
+
+Final validation before PR publication:
+
+```bash
+python scripts/run_precommit_suite.py
+python scripts/run_tests.py
+```
+
+Remote CI runs the same wrapper contract through [`.github/workflows/quality-gates.yml`](.github/workflows/quality-gates.yml):
+
+```bash
+python scripts/run_precommit_suite.py --scope all --reset-baseline --filter-mode full
+python scripts/run_tests.py
+```
+
+Use [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) for review-ready evidence packaging.
+
 ## Project-specific implementation expectations
 
 - Expand placeholder Python modules in place rather than creating new roots casually.
 - Keep package READMEs, architecture docs, and checklist entries synchronized with implementation changes.
 - Do not add runtime dependencies, public claims, or compliance assertions speculatively.
 - Treat candidate rights, suppression, explainability, and auditability as build constraints, not backlog decoration.
+- Use the operational recipes under `context/recipes/` and the prompt assets under `prompts/task_recipes/` when they match the session objective.
 
 ## Release notes and docs
 
 Update [docs/release_notes.md](docs/release_notes.md) whenever project-facing behavior or workflow expectations change. If implementation forces a change in file ownership or roadmap order, update the relevant doc in `docs/` and the affected package README in the same session.
+
+Use these references when workflow issues appear:
+
+- [docs/troubleshooting.md](docs/troubleshooting.md)
+- [docs/generated_artifact_contracts.md](docs/generated_artifact_contracts.md)
+- [docs/source_boundary_manifest.md](docs/source_boundary_manifest.md)

@@ -1,18 +1,15 @@
-# skills/
+# Repository skill pack
 
-**Purpose:** Future reusable execution skills for project and agent workflows.
+This directory contains repository-local skill assets for high-frequency workflows.
 
-**Why this folder exists:** This folder exists so repeatable execution guidance can be versioned and cross-linked.
+## Structure
 
-## Current assets
+- `project/`: reusable execution skills for wrapper-first remediation, checklist audits, documentation parity, and scaffold bootstrap.
+- `agents/`: future role-specific skills for sourcing, compliance, analytics, and other bounded agent roles.
 
-- `README.md`: folder guide for future assets.
+## Usage contract
 
-## Responsibility boundaries
-
-This folder should own the concerns described above and should not silently absorb unrelated responsibilities just because it is nearby. If a new file is added here, update this README and the relevant architecture or localization doc in the same session.
-
-## Nearby related docs or modules
-
-- `docs/04_ai_automation/prompt_recipes_skills_and_context_injection_plan.md`
-- `AGENTS.md`
+1. Read `AGENTS.md` and `docs/agent_bootstrap/operator_context_injection.md` first.
+2. Choose a skill that matches the session objective.
+3. Execute canonical commands exactly as written.
+4. If the task cannot close in-session, create or update actionable checklist follow-up entries.
