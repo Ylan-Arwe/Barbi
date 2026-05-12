@@ -53,13 +53,6 @@ Example format:
 
 ### Phase 0 - Runtime foundation and executable project bootstrap
 
-- [ ] **Implement typed runtime settings and environment-loading support**
-  - Scope: Replace the settings placeholder with real typed configuration loading for API, worker, integrations, AI, analytics, notifications, and governance-sensitive defaults.
-  - Context: Every app shell and service slice will need a shared settings surface before framework bootstrapping or provider wiring can happen safely.
-  - Target Files: `src/ai_recruiting_platform/config/runtime_and_settings.py`, `src/ai_recruiting_platform/config/README.md`, `.env.example`, `docs/03_architecture/technology_architecture.md`
-  - Dependencies: None
-  - DONE WHEN: A typed settings implementation exists, `.env.example` documents required keys, package docs explain the boundary, and wrapper checks pass for the new code roots.
-
 - [ ] **Create initial migration and persistence scaffolding for transactional platform data**
   - Scope: Establish the persistence root, migration tooling, and a first migration plan for tenancy, users, jobs, candidates, audit, and rights-state tables.
   - Context: The domain docs describe the data model, but implementation cannot begin in earnest until migrations and persistence conventions exist.
@@ -71,7 +64,7 @@ Example format:
   - Scope: Turn the app-surface contract files into real framework entrypoints with minimal boot logic, health checks, and placeholder route or job registration.
   - Context: The repo already reserves `apps/api`, `apps/worker`, and `apps/web`. They need executable shells before domain slices can be wired end to end.
   - Target Files: `apps/api/api_surface_contract.py`, `apps/worker/worker_surface_contract.py`, `apps/web/web_surface_contract.py`, `apps/api/README.md`, `apps/worker/README.md`, `apps/web/README.md`
-  - Dependencies: `Implement typed runtime settings and environment-loading support`
+  - Dependencies: None
   - DONE WHEN: Each app root has a real bootstrap module or minimal runtime entrypoint, health-check behavior is documented, and the package READMEs describe how those shells connect to the internal package.
 
 - [ ] **Add local development orchestration for the chosen app and data stack**

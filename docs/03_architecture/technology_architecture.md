@@ -104,6 +104,7 @@ The repository now commits to a single Python-first runtime lane: FastAPI for HT
 ## Dependency posture and implementation boundaries
 
 - Runtime dependencies are now approved for phase-zero foundations and should be introduced only in the owning roots (`apps/`, `src/ai_recruiting_platform/config/`, and `migrations/`).
+- `src/ai_recruiting_platform/config/runtime_and_settings.py` is the canonical typed environment-loading surface and must remain provider-agnostic for non-implemented slices.
 - Do not add provider SDKs (ATS, CRM, email vendors) until the corresponding checklist item is active.
 - Keep `src/ai_recruiting_platform/` framework-light: domain, services, schemas, and contracts should not depend on web routing internals.
 

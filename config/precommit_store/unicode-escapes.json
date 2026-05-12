@@ -748,5 +748,8 @@
   },
   "tests/test_run_tests.py": {
     "skip": "Y"
+  },
+  "tests/test_runtime_settings.py": {
+    "skip": "Y"
   }
 }
