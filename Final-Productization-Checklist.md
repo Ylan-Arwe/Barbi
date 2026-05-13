@@ -53,13 +53,6 @@ Example format:
 
 ### Phase 0 - Runtime foundation and executable project bootstrap
 
-- [ ] **Create initial migration and persistence scaffolding for transactional platform data**
-  - Scope: Establish the persistence root, migration tooling, and a first migration plan for tenancy, users, jobs, candidates, audit, and rights-state tables.
-  - Context: The domain docs describe the data model, but implementation cannot begin in earnest until migrations and persistence conventions exist.
-  - Target Files: `pyproject.toml`, `migrations/README.md`, `migrations/versions/`, `docs/03_architecture/data_model_and_domain_objects.md`, `docs/03_architecture/technology_architecture.md`
-  - Dependencies: None
-  - DONE WHEN: A migration tool and folder structure exist, the first schema plan is codified, and the docs explain how transactional tables will evolve.
-
 - [ ] **Bootstrap the API, worker, and web app shells using the chosen runtime stack**
   - Scope: Turn the app-surface contract files into real framework entrypoints with minimal boot logic, health checks, and placeholder route or job registration.
   - Context: The repo already reserves `apps/api`, `apps/worker`, and `apps/web`. They need executable shells before domain slices can be wired end to end.
@@ -80,7 +73,7 @@ Example format:
   - Scope: Create the first transactional models and persistence logic for tenancy and access control.
   - Context: Every route, workflow, audit record, and analytics event depends on tenant and role context; this is a prerequisite for safe multi-actor behavior.
   - Target Files: `src/ai_recruiting_platform/domain/tenancy_and_access.py`, `src/ai_recruiting_platform/schemas/auth_identity_schemas.py`, `migrations/versions/`, `docs/03_architecture/data_model_and_domain_objects.md`
-  - Dependencies: `Create initial migration and persistence scaffolding for transactional platform data`
+  - Dependencies: None
   - DONE WHEN: Transactional models and migrations exist for tenancy and access state, the domain contract is implemented or replaced with real code, and downstream routes can consume typed access objects.
 
 - [ ] **Implement session, login, and identity-provider integration foundations**

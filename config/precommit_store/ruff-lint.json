@@ -11,6 +11,12 @@
   "apps/worker/worker_surface_contract.py": {
     "skip": "N"
   },
+  "migrations/env.py": {
+    "skip": "Y"
+  },
+  "migrations/versions/20260512_000001_phase0_foundation_plan.py": {
+    "skip": "Y"
+  },
   "scripts/__init__.py": {
     "skip": "Y"
   },

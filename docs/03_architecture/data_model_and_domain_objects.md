@@ -53,3 +53,8 @@ Request schemas should remain typed and explicit about mutation scope. Event pay
 ## Phased implementation notes
 
 Implement persistence in layers: start with domain objects and lifecycle states, then request and response schemas, then migrations and storage, then event projections and analytics views. Never add screening or privacy state as undocumented side fields on unrelated entities.
+
+
+## Migration scaffolding status
+
+A phase-zero Alembic migration scaffold now exists in `migrations/` with an initial revision anchor. Implement table-creating revisions in the order listed in this document so tenancy/access and governance-critical state land before downstream workflow entities.

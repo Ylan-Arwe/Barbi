@@ -382,5 +382,8 @@
   },
   "tests/test_run_tests.py": {
     "skip": "N"
+  },
+  "tests/test_runtime_settings.py": {
+    "skip": "N"
   }
 }

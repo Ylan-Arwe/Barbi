@@ -263,6 +263,18 @@
   "docs/troubleshooting.md": {
     "skip": "Y"
   },
+  "migrations/README.md": {
+    "skip": "Y"
+  },
+  "migrations/alembic.ini": {
+    "skip": "Y"
+  },
+  "migrations/env.py": {
+    "skip": "Y"
+  },
+  "migrations/versions/20260512_000001_phase0_foundation_plan.py": {
+    "skip": "Y"
+  },
   "prompts/README.md": {
     "skip": "Y"
   },
