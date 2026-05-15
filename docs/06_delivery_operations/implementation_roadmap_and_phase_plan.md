@@ -44,3 +44,26 @@ The checklist should remain more granular than this roadmap. Use the roadmap to 
 ## Phased implementation notes
 
 When a phase is materially re-sequenced, update this file, the checklist grouping, and the relevant package READMEs together. Do not silently change implementation order in one place only.
+
+
+## Phase 0 runtime baseline (approved)
+
+Phase 0 now has explicit runtime commitments that unblock checklist execution:
+- Web: Next.js (TypeScript) in `apps/web`;
+- API: FastAPI + Uvicorn in `apps/api`;
+- Worker: Celery + Redis in `apps/worker`;
+- Persistence: PostgreSQL + SQLAlchemy + Alembic;
+- Search: OpenSearch plus pgvector-backed semantic prototype path;
+- Identity: OIDC/OAuth2 with Auth0-compatible provider contracts.
+
+Subsequent Phase 0 entries should implement settings, migration scaffolding, and app shells against this baseline rather than proposing alternate stacks ad hoc.
+
+
+## Phase 0 implementation status snapshot
+
+Completed foundational assets now include:
+- typed runtime settings and environment catalog (`src/ai_recruiting_platform/config/runtime_and_settings.py`, `.env.example`);
+- migration scaffold (`migrations/` with Alembic config and initial revision anchor);
+- executable app-shell bootstraps for API (`FastAPI`), worker (`Celery`), and web shell contract metadata (`apps/web`).
+
+The next Phase 0 priority is local development orchestration so these shells and services can be launched reproducibly by contributors.

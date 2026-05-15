@@ -9,6 +9,17 @@
 - `__init__.py`
 - `runtime_and_settings.py`
 
+## Implemented runtime settings surface
+
+`runtime_and_settings.py` now provides typed, immutable settings groups and a cached `load_settings()` entrypoint for:
+- platform/runtime metadata;
+- API and worker runtime defaults;
+- transactional database and queue endpoints;
+- search, integrations, and AI defaults;
+- analytics, notifications, and compliance-sensitive kill-switch defaults.
+
+Use `.env.example` as the baseline variable catalog for local setup and app-shell bootstrapping.
+
 ## Responsibility boundaries
 
 This folder should own the concerns described above and should not silently absorb unrelated responsibilities just because it is nearby. If a new file is added here, update this README and the relevant architecture or localization doc in the same session.

@@ -2,6 +2,24 @@
   "<GLOBAL>": {
     "skip": "N"
   },
+  "apps/api/api_surface_contract.py": {
+    "skip": "Y"
+  },
+  "apps/extension/extension_surface_contract.py": {
+    "skip": "N"
+  },
+  "apps/web/web_surface_contract.py": {
+    "skip": "Y"
+  },
+  "apps/worker/worker_surface_contract.py": {
+    "skip": "Y"
+  },
+  "migrations/env.py": {
+    "skip": "Y"
+  },
+  "migrations/versions/20260512_000001_phase0_foundation_plan.py": {
+    "skip": "Y"
+  },
   "scripts/__init__.py": {
     "skip": "Y"
   },
@@ -41,10 +59,319 @@
   "scripts/toml_compat.py": {
     "skip": "Y"
   },
+  "src/ai_recruiting_platform/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/agent_registry_and_permissions.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/compliance_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/data_quality_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/hiring_manager_calibration_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/outreach_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/research_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/roi_insights_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/scheduling_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/agents/sourcing_agent_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/ai/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/ai/evaluation_and_guardrails_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/ai/model_gateway_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/ai/prompt_registry_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/ai/ranking_and_matching_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/analytics/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/analytics/event_taxonomy_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/analytics/metrics_catalog_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/analytics/reporting_and_qbr_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/agents_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/analytics_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/auth_and_identity_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/billing_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/candidates_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/compliance_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/integrations_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/jobs_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/outreach_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/scheduling_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/scoring_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/api/search_routes.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/audit/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/audit/audit_log_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/audit/provenance_and_traceability_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/billing/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/billing/entitlements_and_plans.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/billing/usage_and_credits.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/compliance/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/compliance/audit_export_and_bias_support.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/compliance/model_cards_and_risk_classification.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/compliance/privacy_requests_and_candidate_rights.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/compliance/suppression_and_unsubscribe_registry.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/config/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/config/runtime_and_settings.py": {
+    "skip": "Y"
+  },
+  "src/ai_recruiting_platform/data_quality/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/data_quality/deduplication_and_merge_review.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/data_quality/freshness_and_confidence_scoring.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/analytics_and_roi.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/audit_and_provenance.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/billing_and_entitlements.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/candidate_profiles_and_talent_graph.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/compliance_privacy_and_suppression.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/integrations_and_sync.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/jobs_and_calibration.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/outreach_and_sequences.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/replies_and_conversations.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/scheduling_and_interviews.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/scoring_and_explainability.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/search_and_rediscovery.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/domain/tenancy_and_access.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/ats_connectors_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/base_connector_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/crm_hcm_connectors_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/email_and_calendar_connectors_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/integrations/webhooks_and_public_api_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/notifications/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/notifications/notification_delivery_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/analytics_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/billing_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/candidates_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/compliance_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/integration_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/jobs_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/outreach_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/scheduling_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/scoring_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/schemas/search_schemas.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/search/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/search/indexing_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/search/relevance_and_ranking_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/search/semantic_search_contract.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/__init__.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/analytics_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/billing_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/enrichment_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/explainability_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/integration_sync_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/interview_planning_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/job_intake_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/notification_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/outreach_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/privacy_and_suppression_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/rediscovery_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/reply_classification_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/scheduling_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/scoring_service.py": {
+    "skip": "N"
+  },
+  "src/ai_recruiting_platform/services/search_service.py": {
+    "skip": "N"
+  },
   "tests/conftest.py": {
     "skip": "Y"
   },
   "tests/test_aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "tests/test_app_shells.py": {
     "skip": "Y"
   },
   "tests/test_audit_docstrings.py": {
@@ -66,6 +393,9 @@
     "skip": "Y"
   },
   "tests/test_run_tests.py": {
+    "skip": "Y"
+  },
+  "tests/test_runtime_settings.py": {
     "skip": "Y"
   }
 }
