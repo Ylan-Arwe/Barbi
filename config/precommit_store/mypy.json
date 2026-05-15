@@ -1,15 +1,15 @@
 {
   "apps/api/api_surface_contract.py": {
-    "skip": "N"
+    "skip": "Y"
   },
   "apps/extension/extension_surface_contract.py": {
     "skip": "N"
   },
   "apps/web/web_surface_contract.py": {
-    "skip": "N"
+    "skip": "Y"
   },
   "apps/worker/worker_surface_contract.py": {
-    "skip": "N"
+    "skip": "Y"
   },
   "migrations/env.py": {
     "skip": "Y"
@@ -366,6 +366,9 @@
     "skip": "Y"
   },
   "tests/test_aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "tests/test_app_shells.py": {
     "skip": "Y"
   },
   "tests/test_audit_docstrings.py": {

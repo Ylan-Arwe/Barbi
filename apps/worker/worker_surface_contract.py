@@ -1,28 +1,63 @@
-"""
-Purpose:
-- Reserve the async runtime entrypoint for job processing, sync tasks, notifications, and other background work.
+"""Worker shell bootstrap contract using framework-neutral runtime descriptors."""
 
-Planned public functions, classes, endpoints, workers, or components:
-- `create_worker_runtime()`
-- `register_job_handlers()`
-- `register_retry_and_dead_letter_policies()`
-- `attach_worker_observability()`
-- `run_worker()`
+from __future__ import annotations
 
-Major collaborators and dependencies:
-- `src/ai_recruiting_platform/services/` orchestration modules
-- `src/ai_recruiting_platform/integrations/` connectors
-- `docs/06_delivery_operations/observability_operations_and_support.md`
+from dataclasses import dataclass, field
+from os import environ
 
-Inputs, outputs, and boundaries:
-- Inputs: queue configuration, registered handlers, retry policy, tracing and logging hooks. Outputs: worker runtime capable of executing background tasks. Boundary: no domain invariants should be implemented directly in the worker shell.
 
-Implementation sequencing notes:
-- Implement after job schemas, service orchestration, and at least one integration or notification slice exist. Keep task registration declarative here.
+@dataclass(frozen=True)
+class WorkerTaskDescriptor:
+    """Declarative background task registration metadata."""
 
-Related docs and checklist references:
-- `docs/03_architecture/system_architecture.md`
-- `docs/06_delivery_operations/integration_design.md`
-- `docs/06_delivery_operations/observability_operations_and_support.md`
-- `Final-Productization-Checklist.md`
-"""
+    name: str
+
+
+def _empty_tasks() -> list[WorkerTaskDescriptor]:
+    return []
+
+
+@dataclass
+class WorkerRuntime:
+    """Framework-neutral worker runtime payload."""
+
+    broker_url: str
+    result_backend_url: str
+    tasks: list[WorkerTaskDescriptor] = field(default_factory=_empty_tasks)
+    worker_send_task_events: bool = False
+    task_default_retry_delay: int = 0
+
+
+def _broker_url() -> str:
+    return environ.get("BROKER_URL", "redis://localhost:6379/0")
+
+
+def _result_backend_url() -> str:
+    return environ.get("RESULT_BACKEND_URL", "redis://localhost:6379/1")
+
+
+def register_job_handlers(worker_runtime: WorkerRuntime) -> None:
+    worker_runtime.tasks.append(WorkerTaskDescriptor(name="platform.worker.health_check"))
+
+
+def register_retry_and_dead_letter_policies(worker_runtime: WorkerRuntime) -> None:
+    worker_runtime.task_default_retry_delay = 5
+
+
+def attach_worker_observability(worker_runtime: WorkerRuntime) -> None:
+    worker_runtime.worker_send_task_events = True
+
+
+def create_worker_runtime() -> WorkerRuntime:
+    worker_runtime = WorkerRuntime(broker_url=_broker_url(), result_backend_url=_result_backend_url())
+    register_retry_and_dead_letter_policies(worker_runtime)
+    attach_worker_observability(worker_runtime)
+    register_job_handlers(worker_runtime)
+    return worker_runtime
+
+
+def run_worker(worker_runtime: WorkerRuntime) -> list[str]:
+    """Return startup argv equivalent for worker process bootstrap."""
+
+    del worker_runtime
+    return ["worker", "--loglevel=INFO"]

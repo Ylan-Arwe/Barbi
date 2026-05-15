@@ -1,28 +1,95 @@
-"""
-Purpose:
-- Reserve the HTTP application entrypoint for the platform's API surface and document the deployable responsibilities that should stay at the app layer instead of leaking into domain modules.
+"""API shell bootstrap contract using framework-neutral runtime descriptors."""
 
-Planned public functions, classes, endpoints, workers, or components:
-- `create_application()`
-- `register_route_groups()`
-- `attach_middleware_stack()`
-- `attach_observability_and_error_handlers()`
-- `bind_background_dispatch_hooks()`
+from __future__ import annotations
 
-Major collaborators and dependencies:
-- `src/ai_recruiting_platform/api/` route modules
-- `src/ai_recruiting_platform/config/runtime_and_settings.py`
-- `apps/worker/worker_surface_contract.py`
-- `docs/03_architecture/system_architecture.md`
+from collections.abc import Callable
+from dataclasses import dataclass, field
+from os import environ
 
-Inputs, outputs, and boundaries:
-- Inputs: framework-specific runtime configuration, route registries, auth middleware, observability hooks. Outputs: initialized HTTP application. Boundary: no business rules or provider-specific orchestration should live here.
 
-Implementation sequencing notes:
-- Implement after settings, auth, route-group contracts, and core service wiring have been chosen. Keep framework bootstrapping isolated here so the internal package stays portable.
+@dataclass(frozen=True)
+class HealthPayload:
+    """Typed health-check payload for API status endpoints."""
 
-Related docs and checklist references:
-- `docs/03_architecture/system_architecture.md`
-- `docs/03_architecture/api_design_and_webhooks.md`
-- `Final-Productization-Checklist.md`
-"""
+    service: str
+    environment: str
+    status: str
+
+
+@dataclass(frozen=True)
+class RouteDescriptor:
+    """Declarative route registration metadata."""
+
+    method: str
+    path: str
+    handler_name: str
+
+
+def _empty_route_descriptors() -> list[RouteDescriptor]:
+    return []
+
+
+def _empty_startup_hooks() -> list[str]:
+    return []
+
+
+@dataclass
+class ApiApplication:
+    """Framework-neutral API shell runtime payload."""
+
+    name: str
+    docs_enabled: bool
+    routes: list[RouteDescriptor] = field(default_factory=_empty_route_descriptors)
+    startup_hooks: list[str] = field(default_factory=_empty_startup_hooks)
+
+
+def _service_name() -> str:
+    return environ.get("SERVICE_NAME", "ai-recruiting-platform")
+
+
+def _environment() -> str:
+    return environ.get("ENVIRONMENT", "local")
+
+
+def _enable_docs() -> bool:
+    return environ.get("ENABLE_DOCS", "true").lower() in {"1", "true", "yes", "on"}
+
+
+def healthz() -> HealthPayload:
+    """Return process health payload for liveness checks."""
+
+    return HealthPayload(service=_service_name(), environment=_environment(), status="ok")
+
+
+def register_route_groups(application: ApiApplication) -> None:
+    """Register starter route groups for the API shell."""
+
+    application.routes.append(RouteDescriptor(method="GET", path="/v1/healthz", handler_name="healthz"))
+
+
+def attach_middleware_stack(application: ApiApplication) -> None:
+    del application
+
+
+def attach_observability_and_error_handlers(application: ApiApplication) -> None:
+    del application
+
+
+def bind_background_dispatch_hooks(
+    application: ApiApplication, dispatch_hook: Callable[[str], None] | None = None
+) -> None:
+    if dispatch_hook is None:
+        return
+    dispatch_hook("startup")
+    application.startup_hooks.append("dispatch_hook")
+
+
+def create_application() -> ApiApplication:
+    """Create and configure the API application shell."""
+
+    application = ApiApplication(name=f"{_service_name()} API", docs_enabled=_enable_docs())
+    attach_middleware_stack(application)
+    register_route_groups(application)
+    attach_observability_and_error_handlers(application)
+    bind_background_dispatch_hooks(application)
+    return application

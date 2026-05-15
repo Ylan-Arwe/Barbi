@@ -740,6 +740,9 @@
   "tests/test_aggregate_project_docstrings.py": {
     "skip": "Y"
   },
+  "tests/test_app_shells.py": {
+    "skip": "Y"
+  },
   "tests/test_audit_docstrings.py": {
     "skip": "Y"
   },

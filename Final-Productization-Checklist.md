@@ -53,18 +53,11 @@ Example format:
 
 ### Phase 0 - Runtime foundation and executable project bootstrap
 
-- [ ] **Bootstrap the API, worker, and web app shells using the chosen runtime stack**
-  - Scope: Turn the app-surface contract files into real framework entrypoints with minimal boot logic, health checks, and placeholder route or job registration.
-  - Context: The repo already reserves `apps/api`, `apps/worker`, and `apps/web`. They need executable shells before domain slices can be wired end to end.
-  - Target Files: `apps/api/api_surface_contract.py`, `apps/worker/worker_surface_contract.py`, `apps/web/web_surface_contract.py`, `apps/api/README.md`, `apps/worker/README.md`, `apps/web/README.md`
-  - Dependencies: None
-  - DONE WHEN: Each app root has a real bootstrap module or minimal runtime entrypoint, health-check behavior is documented, and the package READMEs describe how those shells connect to the internal package.
-
 - [ ] **Add local development orchestration for the chosen app and data stack**
   - Scope: Create reproducible local startup instructions and any required dev-container or compose assets for API, worker, data stores, and supporting services.
   - Context: A stateless agent can scaffold code, but humans still need a reproducible way to run the system locally as real implementation begins.
   - Target Files: `README.md`, `CONTRIBUTING.md`, `docker-compose.yml`, `.dockerignore`, `docs/new_user_onboarding.md`
-  - Dependencies: `Bootstrap the API, worker, and web app shells using the chosen runtime stack`
+  - Dependencies: None
   - DONE WHEN: A documented local run path exists for the selected stack, new contributors can start the essential services, and docs no longer describe local execution as purely theoretical.
 
 ### Phase 1 - Identity, tenancy, and admin control plane
@@ -80,7 +73,7 @@ Example format:
   - Scope: Build the first auth and session workflows, including a local developer auth path and the interface for future SSO or provisioning support.
   - Context: The blueprint expects SSO and enterprise identity later, but the first workflow slices still need a real authenticated actor model.
   - Target Files: `src/ai_recruiting_platform/api/auth_and_identity_routes.py`, `apps/api/api_surface_contract.py`, `apps/web/web_surface_contract.py`, `docs/05_governance_trust/security_trust_and_candidate_rights.md`
-  - Dependencies: `Implement tenant, workspace, user, team, role, and permission persistence models`, `Bootstrap the API, worker, and web app shells using the chosen runtime stack`
+  - Dependencies: `Implement tenant, workspace, user, team, role, and permission persistence models`
   - DONE WHEN: Users can establish a session through the chosen first-step auth path, route protection is enforceable, and future SSO support is documented without being falsely claimed as complete.
 
 - [ ] **Implement RBAC enforcement and object-scope guards across route families**

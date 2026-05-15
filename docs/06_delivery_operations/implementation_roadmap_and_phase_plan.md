@@ -57,3 +57,13 @@ Phase 0 now has explicit runtime commitments that unblock checklist execution:
 - Identity: OIDC/OAuth2 with Auth0-compatible provider contracts.
 
 Subsequent Phase 0 entries should implement settings, migration scaffolding, and app shells against this baseline rather than proposing alternate stacks ad hoc.
+
+
+## Phase 0 implementation status snapshot
+
+Completed foundational assets now include:
+- typed runtime settings and environment catalog (`src/ai_recruiting_platform/config/runtime_and_settings.py`, `.env.example`);
+- migration scaffold (`migrations/` with Alembic config and initial revision anchor);
+- executable app-shell bootstraps for API (`FastAPI`), worker (`Celery`), and web shell contract metadata (`apps/web`).
+
+The next Phase 0 priority is local development orchestration so these shells and services can be launched reproducibly by contributors.

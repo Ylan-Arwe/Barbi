@@ -1,29 +1,57 @@
-"""
-Purpose:
-- Reserve the primary web application shell for recruiter, hiring-manager, admin, compliance, developer, and candidate-facing experiences.
+"""Web application shell contract for Next.js-facing route and health metadata."""
 
-Planned public functions, classes, endpoints, workers, or components:
-- `define_route_groups()`
-- `attach_layout_shells()`
-- `register_role_gated_navigation()`
-- `bind_data_loading_contracts()`
-- `attach_error_and_empty_state_patterns()`
+from __future__ import annotations
 
-Major collaborators and dependencies:
-- `docs/02_experience/ux_specification.md`
-- `docs/02_experience/information_architecture_and_navigation.md`
-- `src/ai_recruiting_platform/api/` route groups
-- `src/ai_recruiting_platform/schemas/`
+from dataclasses import dataclass
+from os import environ
 
-Inputs, outputs, and boundaries:
-- Inputs: route-group definitions, auth/session state, API clients, role-aware navigation state. Outputs: the user-facing web shell. Boundary: business logic and persistence remain in the internal package and API layers.
 
-Implementation sequencing notes:
-- Implement after navigation groups, route contracts, and at least one vertical workflow slice are defined. Keep role-based visibility and accessibility concerns explicit at this layer.
+@dataclass(frozen=True)
+class RouteGroup:
+    name: str
+    base_path: str
+    allowed_roles: tuple[str, ...]
 
-Related docs and checklist references:
-- `docs/02_experience/ux_specification.md`
-- `docs/02_experience/information_architecture_and_navigation.md`
-- `docs/02_experience/screen_inventory.md`
-- `Final-Productization-Checklist.md`
-"""
+
+@dataclass(frozen=True)
+class WebShellContract:
+    app_name: str
+    environment: str
+    route_groups: tuple[RouteGroup, ...]
+
+
+def define_route_groups() -> tuple[RouteGroup, ...]:
+    return (
+        RouteGroup(name="recruiter", base_path="/recruiter", allowed_roles=("recruiter", "admin")),
+        RouteGroup(name="hiring_manager", base_path="/hiring-manager", allowed_roles=("hiring_manager", "admin")),
+        RouteGroup(name="admin", base_path="/admin", allowed_roles=("admin",)),
+        RouteGroup(name="compliance", base_path="/compliance", allowed_roles=("compliance", "admin")),
+    )
+
+
+def attach_layout_shells(contract: WebShellContract) -> WebShellContract:
+    return contract
+
+
+def register_role_gated_navigation(contract: WebShellContract) -> WebShellContract:
+    return contract
+
+
+def bind_data_loading_contracts(contract: WebShellContract) -> WebShellContract:
+    return contract
+
+
+def attach_error_and_empty_state_patterns(contract: WebShellContract) -> WebShellContract:
+    return contract
+
+
+def create_web_shell_contract() -> WebShellContract:
+    contract = WebShellContract(
+        app_name=f"{environ.get('SERVICE_NAME', 'ai-recruiting-platform')} Web",
+        environment=environ.get("ENVIRONMENT", "local"),
+        route_groups=define_route_groups(),
+    )
+    contract = attach_layout_shells(contract)
+    contract = register_role_gated_navigation(contract)
+    contract = bind_data_loading_contracts(contract)
+    return attach_error_and_empty_state_patterns(contract)
